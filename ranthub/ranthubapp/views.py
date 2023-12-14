@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.http import HttpResponse
-from .models import Room, Topic
+from .models import Room, Topic, Message
 from .forms import RoomForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -73,7 +73,17 @@ def home(request):
 
 def room(request ,pk):
     room = Room.objects.get(id=pk)
-    context = {'room':room}
+    room_messages = room.message_set.all().order_by('-created')
+    participants = room.participants.all()
+    if request.method == 'POST':
+        message = Message.objects.create(
+            user = request.user,
+            room = room,
+            body = request.POST.get('body')
+        )
+        room.participants.add(request.user)
+        return redirect('room', pk=room.id)
+    context = {'room':room, 'room_messages':room_messages, 'participants':participants}
     return render(request, 'ranthubapp/room.html',context)
 
 @login_required(login_url='login')
@@ -115,3 +125,17 @@ def deleteRoom(request, pk):
         room.delete()
         return redirect('home')
     return render(request, 'ranthubapp/delete.html',{'obj':room})
+
+
+@login_required(login_url='login')
+def deleteMessage(request, pk):
+    message = Message.objects.get(id=pk)
+
+    if request.user != message.user:
+        return HttpResponse('You are not allowed here')
+    
+    
+    if request.method == 'POST':
+        message.delete()
+        return redirect('home')
+    return render(request, 'ranthubapp/delete.html',{'obj':message})
