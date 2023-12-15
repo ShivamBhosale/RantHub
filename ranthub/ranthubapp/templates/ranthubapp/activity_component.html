@@ -1,10 +1,10 @@
-
+<div>
     <h3>Top Rants</h3>
     <hr>
     {% for message in room_messages %}
         <div>
             <small>
-                @{{message.user}} - {{message.created|timesince}} ago
+               <a href="{% url 'user-profile' message.user.id %}"> @{{message.user}}</a> - {{message.created|timesince}} ago
             </small>
             <small>
                 replied to "{{message.room}}"
@@ -19,6 +19,8 @@
         </div>
        
     {% endfor %}
+
+    </div>
         
         
 
