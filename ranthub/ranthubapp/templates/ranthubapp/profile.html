@@ -3,24 +3,21 @@
 <style>
     .profile-container{
             display: grid;
-            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-columns: 5fr 1fr;
            
     }
   
 </style>
-<center><h1>{{user.username}}</h1>
+<center><h1>{{user.username}}</h1> </center>
 
-
-
-
+<div class="profile-container">
+    <div>
+        {% include 'ranthubapp/activity_component.html' %}
+    </div>
     <div>
         {% include 'ranthubapp/feed_component.html' %}
-        
     </div>
-
    
-
-
-</center>
-
+   
+</div>
 {% endblock content %}
