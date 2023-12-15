@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RantHub</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'ranthubapp/styles/main.css' %}">
+
+
+
 </head>
 <body>
     <a href="{% url 'home' %}">Logo</a>
@@ -21,6 +26,7 @@
 
     
     <hr>
+    
 
     {% if messages %}
 <ul class="messages">
@@ -30,7 +36,7 @@
 </ul>
 
 {% endif %}
-
+    <!-- <img src="{% static 'images/pain.jpg' %}" alt=""> -->
     {% block content %}
  
   
