@@ -1,44 +1,28 @@
 {% extends 'ranthubapp/main.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% block content %}
-    <style>
-        .home-container{
-            display: grid;
-            grid-template-columns: 1fr 3fr 1fr;
-           
-        }
-    </style>
-    <br>
-    <div class="home-container">
-        <div>
-           {% include 'ranthubapp/topics_component.html' %}
-        </div>
+{% block content %}
+<style>
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 2fr;
+    }
 
-        <div>
-            <h5>{{room_count}} rooms available</h5>
-            <a href="{% url 'create-room' %}">Create Room</a>
-            
+    
+</style>
+<br>
+<div class="home-container">
+    <div>
+       {% include 'ranthubapp/topics_component.html' %}
+    </div>
+
+    <div>
+        <h5>{{ room_count }} rooms available</h5>
+        <a href="{% url 'create-room' %}">Create Room</a>
         {% include 'ranthubapp/feed_component.html' %}
-   </div>
+    </div>
+
     <div>
         {% include 'ranthubapp/activity_component.html' %}
     </div>
-  
-       
-
-
-
-
-    
-    </div>
-    {% endblock content %}
-</body>
-</html>
+</div>
+{% endblock content %}

@@ -131,14 +131,16 @@ def updateRoom(request, pk):
 
 @login_required(login_url='login')
 def deleteRoom(request, pk):
+    room = Room.objects.get(id=pk)  # Define 'room' before accessing it
+    
     if request.user != room.host:
         return HttpResponse('You are not allowed here')
     
-    room = Room.objects.get(id=pk)
     if request.method == 'POST':
         room.delete()
         return redirect('home')
-    return render(request, 'ranthubapp/delete.html',{'obj':room})
+    
+    return render(request, 'ranthubapp/delete.html', {'obj': room})
 
 
 @login_required(login_url='login')
