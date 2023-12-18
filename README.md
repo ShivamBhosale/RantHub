@@ -21,3 +21,5 @@ To run this project locally, follow these steps:
 6. Apply migrations: `python manage.py migrate`
 7. Create a superuser: `python manage.py createsuperuser`
 8. Run the development server: `python manage.py runserver`
+
+check it out - shivambhosale99.pythonanywhere.com/
