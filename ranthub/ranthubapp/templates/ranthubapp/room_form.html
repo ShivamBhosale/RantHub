@@ -1,6 +1,58 @@
 {% extends 'ranthubapp/main.html' %}
 
 {% block content %}
+<style>
+    /* Your existing color variables */
+    :root {
+    --color-dark-medium: #71c6dd; /* Light blue */
+    --color-main-light: #c7e9f6;
+    --color-dark: #3f4156; /* Dark purple */
+    --color-main: #ff8c00; /* Orange */
+    --color-dark-light: #8a8cb3;
+    --color-light: #f0f0f0;
+    --color-gray: #8b8b8b;
+    --color-light-gray: #b2bdbd;
+    --color-bg: #3f4156; /* Dark purple */
+    --color-success: #5dd693;
+    --color-error: #ff725e;
+    --gradient-bg: linear-gradient(to bottom right, #3f4156, #6a4f8a);
+  }
+  
+
+/* Apply the dark theme to the form */
+form {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--color-dark-light);
+  border-radius: 4px;
+  /*   */
+  color: var(--color-light);
+}
+
+form input[type="submit"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-main);
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--color-main-light);
+}
+
+</style>
 <div>
     <form method="POST" action="">
         {% csrf_token %}
