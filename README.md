@@ -1,4 +1,4 @@
-# RantApp
+# RantHub
 
 RantApp is a Django-based web application designed to provide users with a platform to express their thoughts, frustrations, and opinions.
 
